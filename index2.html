@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود / ثبت نام | برنجکده خان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #4CAF50;
+            --accent-color: #ff8c00;
+            --error-color: #e74c3c;
+            --success-color: #2ecc71;
+            --text-color: #333;
+            --bg-light: #f9f9f9;
+            --white: #fff;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f9f9f9 0%, #e6f4e6 100%);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-toggle {
+            display: flex;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 30px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Vazirmatn', sans-serif;
+            cursor: pointer;
+            color: #aaa;
+            transition: all var(--transition-speed) ease;
+            position: relative;
+            outline: none;
+        }
+
+        .toggle-btn:hover, 
+        .toggle-btn:focus {
+            color: var(--primary-color);
+        }
+
+        .toggle-btn.active {
+            color: var(--primary-color);
+        }
+        
+        .toggle-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+            animation: slideIn var(--transition-speed) ease;
+        }
+
+        .form-content {
+            opacity: 1;
+            transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+            transform: translateX(0);
+        }
+
+        .form-content.hidden {
+            display: none;
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .form-content h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            font-weight: 800;
+            position: relative;
+        }
+
+        .form-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 50px 15px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        .form-group i:not(.password-toggle i) {
+            position: absolute;
+            top: 45px;
+            right: 15px;
+            color: #aaa;
+            pointer-events: none;
+        }
+
+        .password-toggle {
+            position: absolute;
+            top: 45px;
+            left: 15px;
+            color: #777;
+            cursor: pointer;
+            z-index: 2;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-family: 'Vazirmatn', sans-serif;
+            box-shadow: 0 4px 10px rgba(44, 94, 45, 0.3);
+        }
+
+        .btn-submit:hover {
+            background-color: #245a25;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-submit:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+        }
+        
+        .form-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: color 0.3s;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+            color: var(--secondary-color);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .notification.success {
+            background-color: var(--success-color);
+        }
+
+        .notification.error {
+            background-color: var(--error-color);
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .password-strength {
+            height: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            background: #eee;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s, background 0.3s;
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 25px;
+            }
+            
+            .toggle-btn {
+                padding: 12px;
+                font-size: 1rem;
+            }
+            
+            .form-group input {
+                padding: 12px 45px 12px 12px;
+            }
+            
+            .password-toggle {
+                left: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="logo-container">
+        <div class="logo">
+            <i class="fas fa-leaf"></i>
+        </div>
+        <h1 class="logo-text">برنجکده خان</h1>
+    </div>
+
+    <div class="form-container">
+        <!-- Toggle Buttons -->
+        <div class="form-toggle">
+            <button id="login-toggle" class="toggle-btn active">ورود</button>
+            <button id="signup-toggle" class="toggle-btn">ثبت نام</button>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="form-content">
+            <h2>ورود به حساب کاربری</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login-email">ایمیل</label>
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="login-email" placeholder="example@gmail.com" required>
+                    <div class="error-message" id="login-email-error">لطفا یک ایمیل معتبر وارد کنید</div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">رمز عبور</label>
+                    <i class="fas fa-lock"></i>
+                    <span class="password-toggle" id="login-password-toggle">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <input type="password" id="login-password" placeholder="••••••••" required minlength="8">
+                    <div class="error-message" id="login-password-error">رمز عبور باید حداقل ۸ کاراکتر داشته باشد</div>
+                </div>
+                <button type="submit" class="btn-submit" id="login-submit">
+                    <span>ورود</span>
+                    <div class="loading-spinner" id="login-spinner"></div>
+                </button>
+            </form>
+            <div class="form-footer">
+                <a href="#" id="forgot-password">رمز عبور خود را فراموش کرده‌اید؟</a>
+            </div>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="form-content hidden">
+            <h2>ایجاد حساب کاربری</h2>
+            <form id="signupForm">
+                 <div class="form-group">
+                    <label for="signup-name">نام و نام خانوادگی</label>
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="signup-name" placeholder="نام کامل خود را وارد کنید" required>
+                    <div class="error-message" id="signup-name-error">لطفا نام خود را وارد کنید</div>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">ایمیل</label>
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="signup-email" placeholder="example@gmail.com" required>
+                    <div class="error-message" id="signup-email-error">لطفا یک ایمیل معتبر وارد کنید</div>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">رمز عبور</label>
+                    <i class="fas fa-lock"></i>
+                    <span class="password-toggle" id="signup-password-toggle">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <input type="password" id="signup-password" placeholder="حداقل ۸ کاراکتر" required minlength="8">
+                    <div class="error-message" id="signup-password-error">رمز عبور باید حداقل ۸ کاراکتر داشته باشد</div>
+                    <div class="password-strength">
+                        <div class="password-strength-bar" id="signup-password-strength"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="signup-confirm-password">تکرار رمز عبور</label>
+                    <i class="fas fa-lock"></i>
+                    <span class="password-toggle" id="signup-confirm-password-toggle">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                    <input type="password" id="signup-confirm-password" placeholder="تکرار رمز عبور" required minlength="8">
+                    <div class="error-message" id="signup-confirm-password-error">رمزهای عبور مطابقت ندارند</div>
+                </div>
+                <button type="submit" class="btn-submit" id="signup-submit">
+                    <span>ثبت نام</span>
+                    <div class="loading-spinner" id="signup-spinner"></div>
+                </button>
+            </form>
+        </div>
+
+        <div class="form-footer">
+            <a href="index.html">بازگشت به صفحه اصلی &larr;</a>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elements
+            const loginToggle = document.getElementById('login-toggle');
+            const signupToggle = document.getElementById('signup-toggle');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const loginSubmit = document.getElementById('login-submit');
+            const signupSubmit = document.getElementById('signup-submit');
+            const notification = document.getElementById('notification');
+            const loginSpinner = document.getElementById('login-spinner');
+            const signupSpinner = document.getElementById('signup-spinner');
+            
+            // Password toggle functionality
+            function setupPasswordToggle(passwordId, toggleId) {
+                const passwordInput = document.getElementById(passwordId);
+                const toggleButton = document.getElementById(toggleId);
+                const icon = toggleButton.querySelector('i');
+                
+                toggleButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        icon.classList.remove('fa-eye');
+                        icon.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        icon.classList.remove('fa-eye-slash');
+                        icon.classList.add('fa-eye');
+                    }
+                    
+                    // Focus on the input after toggle
+                    passwordInput.focus();
+                });
+            }
+            
+            // Setup password toggles
+            setupPasswordToggle('login-password', 'login-password-toggle');
+            setupPasswordToggle('signup-password', 'signup-password-toggle');
+            setupPasswordToggle('signup-confirm-password', 'signup-confirm-password-toggle');
+            
+            // Form toggle functionality
+            function showForm(formToShow, formToHide, activeToggle, inactiveToggle) {
+                activeToggle.classList.add('active');
+                inactiveToggle.classList.remove('active');
+                
+                formToHide.classList.add('hidden');
+                setTimeout(() => {
+                    formToHide.style.display = 'none';
+                    formToShow.style.display = 'block';
+                    setTimeout(() => {
+                        formToShow.classList.remove('hidden');
+                    }, 50);
+                }, 300);
+            }
+            
+            signupToggle.addEventListener('click', () => {
+                showForm(signupForm, loginForm, signupToggle, loginToggle);
+                resetForm(signupForm);
+            });
+
+            loginToggle.addEventListener('click', () => {
+                showForm(loginForm, signupForm, loginToggle, signupToggle);
+                resetForm(loginForm);
+            });
+            
+            // Reset form function
+            function resetForm(formElement) {
+                formElement.reset();
+                formElement.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+                formElement.querySelectorAll('input').forEach(input => {
+                    input.style.borderColor = '#ddd';
+                });
+                document.getElementById('signup-password-strength').style.width = '0%';
+            }
+            
+            // Show notification
+            function showNotification(message, isSuccess = true) {
+                notification.textContent = message;
+                notification.className = 'notification ' + (isSuccess ? 'success' : 'error');
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+            
+            // Validation functions
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            
+            function showError(inputId, errorId, message) {
+                document.getElementById(errorId).textContent = message;
+                document.getElementById(errorId).style.display = 'block';
+                document.getElementById(inputId).style.borderColor = 'var(--error-color)';
+            }
+            
+            function clearError(inputId, errorId) {
+                document.getElementById(errorId).style.display = 'none';
+                document.getElementById(inputId).style.borderColor = '#ddd';
+            }
+            
+            // Password strength indicator
+            function checkPasswordStrength(password) {
+                let strength = 0;
+                if (password.length >= 8) strength += 20;
+                if (password.match(/[a-z]/)) strength += 20;
+                if (password.match(/[A-Z]/)) strength += 20;
+                if (password.match(/[0-9]/)) strength += 20;
+                if (password.match(/[^a-zA-Z0-9]/)) strength += 20;
+                
+                return strength;
+            }
+            
+            document.getElementById('signup-password').addEventListener('input', function() {
+                const strength = checkPasswordStrength(this.value);
+                const strengthBar = document.getElementById('signup-password-strength');
+                
+                strengthBar.style.width = strength + '%';
+                
+                if (strength < 40) {
+                    strengthBar.style.background = '#e74c3c';
+                } else if (strength < 80) {
+                    strengthBar.style.background = '#f39c12';
+                } else {
+                    strengthBar.style.background = '#2ecc71';
+                }
+                
+                // Real-time validation for confirm password
+                const confirmPassword = document.getElementById('signup-confirm-password').value;
+                if (confirmPassword && confirmPassword !== this.value) {
+                    showError('signup-confirm-password', 'signup-confirm-password-error', 'رمزهای عبور مطابقت ندارند');
+                } else {
+                    clearError('signup-confirm-password', 'signup-confirm-password-error');
+                }
+            });
+            
+            // Real-time validation for confirm password
+            document.getElementById('signup-confirm-password').addEventListener('input', function() {
+                const password = document.getElementById('signup-password').value;
+                if (this.value && this.value !== password) {
+                    showError('signup-confirm-password', 'signup-confirm-password-error', 'رمزهای عبور مطابقت ندارند');
+                } else {
+                    clearError('signup-confirm-password', 'signup-confirm-password-error');
+                }
+            });
+            
+            // Login form validation
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+                
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+                
+                // Validate email
+                if (!validateEmail(email)) {
+                    showError('login-email', 'login-email-error', 'لطفا یک ایمیل معتبر وارد کنید');
+                    isValid = false;
+                } else {
+                    clearError('login-email', 'login-email-error');
+                }
+                
+                // Validate password
+                if (password.length < 8) {
+                    showError('login-password', 'login-password-error', 'رمز عبور باید حداقل ۸ کاراکتر داشته باشد');
+                    isValid = false;
+                } else {
+                    clearError('login-password', 'login-password-error');
+                }
+                
+                if (isValid) {
+                    // Simulate form submission
+                    loginSubmit.disabled = true;
+                    loginSpinner.style.display = 'inline-block';
+                    loginSubmit.querySelector('span').textContent = 'در حال ورود...';
+                    
+                    setTimeout(() => {
+                        showNotification('با موفقیت وارد شدید!', true);
+                        loginSpinner.style.display = 'none';
+                        loginSubmit.disabled = false;
+                        loginSubmit.querySelector('span').textContent = 'ورود';
+                        // In a real app, you would redirect or update UI here
+                    }, 1500);
+                }
+            });
+            
+            // Signup form validation
+            signupForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                let isValid = true;
+                
+                const name = document.getElementById('signup-name').value;
+                const email = document.getElementById('signup-email').value;
+                const password = document.getElementById('signup-password').value;
+                const confirmPassword = document.getElementById('signup-confirm-password').value;
+                
+                // Validate name
+                if (name.trim().length < 3) {
+                    showError('signup-name', 'signup-name-error', 'نام باید حداقل ۳ کاراکتر داشته باشد');
+                    isValid = false;
+                } else {
+                    clearError('signup-name', 'signup-name-error');
+                }
+                
+                // Validate email
+                if (!validateEmail(email)) {
+                    showError('signup-email', 'signup-email-error', 'لطفا یک ایمیل معتبر وارد کنید');
+                    isValid = false;
+                } else {
+                    clearError('signup-email', 'signup-email-error');
+                }
+                
+                // Validate password
+                if (password.length < 8) {
+                    showError('signup-password', 'signup-password-error', 'رمز عبور باید حداقل ۸ کاراکتر داشته باشد');
+                    isValid = false;
+                } else {
+                    clearError('signup-password', 'signup-password-error');
+                }
+                
+                // Validate confirm password
+                if (password !== confirmPassword) {
+                    showError('signup-confirm-password', 'signup-confirm-password-error', 'رمزهای عبور مطابقت ندارند');
+                    isValid = false;
+                } else {
+                    clearError('signup-confirm-password', 'signup-confirm-password-error');
+                }
+                
+                if (isValid) {
+                    // Simulate form submission
+                    signupSubmit.disabled = true;
+                    signupSpinner.style.display = 'inline-block';
+                    signupSubmit.querySelector('span').textContent = 'در حال ثبت نام...';
+                    
+                    setTimeout(() => {
+                        showNotification('حساب کاربری با موفقیت ایجاد شد!', true);
+                        signupSpinner.style.display = 'none';
+                        signupSubmit.disabled = false;
+                        signupSubmit.querySelector('span').textContent = 'ثبت نام';
+                        
+                        // Switch to login form after successful registration
+                        setTimeout(() => {
+                            showForm(loginForm, signupForm, loginToggle, signupToggle);
+                            document.getElementById('login-email').value = email;
+                        }, 1000);
+                    }, 1500);
+                }
+            });
+            
+            // Real-time validation
+            document.querySelectorAll('input').forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.id === 'login-email' || this.id === 'signup-email') {
+                        if (this.value && !validateEmail(this.value)) {
+                            showError(this.id, this.id + '-error', 'لطفا یک ایمیل معتبر وارد کنید');
+                        } else {
+                            clearError(this.id, this.id + '-error');
+                        }
+                    }
+                    
+                    if (this.id === 'login-password' || this.id === 'signup-password') {
+                        if (this.value && this.value.length < 8) {
+                            showError(this.id, this.id + '-error', 'رمز عبور باید حداقل ۸ کاراکتر داشته باشد');
+                        } else {
+                            clearError(this.id, this.id + '-error');
+                        }
+                    }
+                    
+                    if (this.id === 'signup-confirm-password') {
+                        const password = document.getElementById('signup-password').value;
+                        if (this.value && this.value !== password) {
+                            showError(this.id, this.id + '-error', 'رمزهای عبور مطابقت ندارند');
+                        } else {
+                            clearError(this.id, this.id + '-error');
+                        }
+                    }
+                    
+                    if (this.id === 'signup-name') {
+                        if (this.value && this.value.trim().length < 3) {
+                            showError(this.id, this.id + '-error', 'نام باید حداقل ۳ کاراکتر داشته باشد');
+                        } else {
+                            clearError(this.id, this.id + '-error');
+                        }
+                    }
+                });
+            });
+            
+            // Forgot password functionality
+            document.getElementById('forgot-password').addEventListener('click', (e) => {
+                e.preventDefault();
+                const email = document.getElementById('login-email').value;
+                
+                if (!email || !validateEmail(email)) {
+                    showNotification('لطفا یک ایمیل معتبر وارد کنید', false);
+                    document.getElementById('login-email').focus();
+                    return;
+                }
+                
+                showNotification('لینک بازنشانی رمز عبور به ایمیل شما ارسال شد', true);
+            });
+            
+            // Handle Enter key press
+            document.getElementById('loginForm').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    loginForm.dispatchEvent(new Event('submit'));
+                }
+            });
+
+            document.getElementById('signupForm').addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    signupForm.dispatchEvent(new Event('submit'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>

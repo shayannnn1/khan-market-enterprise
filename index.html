@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>برنجکده خان | فروشگاه برنج اعلا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* General Styles */
+        :root {
+            --primary-color: #2c5e2d;
+            --secondary-color: #4CAF50;
+            --accent-color: #ff8c00;
+            --text-color: #333;
+            --bg-light: #f9f9f9;
+            --white: #fff;
+            --danger-color: #ff4d4d;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            background-color: var(--white);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        /* Advanced Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-end;
+            /* Pushes content to the right (start in RTL) */
+            align-items: center;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #c8e6c9;
+        }
+
+        .contact-info i {
+            margin-left: 5px;
+        }
+
+        .header-main {
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-signin {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-signin:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-signup {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-signup:hover {
+            background-color: #45a049;
+        }
+
+        /* Automatic Slider */
+        .slider-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            background-color: #e0e0e0;
+        }
+
+        .slider-wrapper {
+            display: flex;
+            height: 100%;
+            transition: transform 0.7s ease-in-out;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .slide-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px 50px;
+            border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .slide-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .dot.active {
+            background-color: var(--white);
+            transform: scale(1.2);
+        }
+
+        /* Product Section */
+        #products {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .btn-add-to-cart {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+
+        /* --- New About Us Section --- */
+        #about-us {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* --- New FAQ Section --- */
+        #faq {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: right;
+            padding: 20px 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Vazirmatn', sans-serif;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-color);
+        }
+
+        .faq-question i {
+            font-size: 1rem;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            color: #555;
+            padding: 0 15px;
+        }
+
+        .faq-answer p {
+            margin-top: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            /* Adjust if answers are longer */
+            padding: 0 15px 20px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 50px 0 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-column.footer-about .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .footer-about p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-links a {
+            color: #bdc3c7;
+            font-size: 1.4rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .footer-social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links ul a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul a:hover {
+            color: var(--white);
+            padding-right: 8px;
+        }
+
+        .footer-links ul a i {
+            margin-left: 8px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            width: 30px;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        .footer-contact a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding: 20px 0;
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        /* Cart & Toast Styles (Unchanged) */
+        .cart-container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 1.8rem;
+            color: var(--text-color);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: var(--danger-color);
+            color: var(--white);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 2px solid var(--white);
+            transform: scale(0);
+            transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        .cart-badge.visible {
+            transform: scale(1);
+        }
+
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast i {
+            font-size: 1.5rem;
+            margin-left: 15px;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .cart-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 420px;
+            max-width: 95%;
+            height: 100%;
+            background-color: var(--white);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-overlay.show .cart-panel {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        #close-cart-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #888;
+            transition: transform 0.2s;
+        }
+
+        #close-cart-btn:hover {
+            transform: rotate(90deg);
+            color: var(--text-color);
+        }
+
+        #cart-items-container {
+            padding: 10px 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-left: 15px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-details h4 {
+            margin: 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .cart-item-details p {
+            margin: 0;
+            color: #555;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            color: var(--primary-color);
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .btn-remove-item {
+            background: none;
+            border: none;
+            color: var(--danger-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: auto;
+            padding: 5px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background-color: var(--bg-light);
+        }
+
+        .cart-total h3 {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 0 15px;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        .btn-checkout:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #empty-cart-message {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+            color: #888;
+        }
+
+        #empty-cart-message i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            color: #ddd;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-info span {
+                display: none;
+            }
+
+            .top-bar-content {
+                justify-content: center;
+            }
+
+            .header-main nav {
+                display: none;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-social-links,
+            .footer-contact p {
+                justify-content: center;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-top-bar">
+            <div class="container top-bar-content">
+                <div class="contact-info">
+                    <a href="tel:+989123456789"><i class="fas fa-phone"></i> <span>۰۹۱۲۳۴۵۶۷۸۹</span></a>
+                    <a href="mailto:info@berenjkade.com"><i class="fas fa-envelope"></i>
+                        <span>info@berenjkade.com</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container header-content">
+                <div class="logo"><a href="#">برنجکده خان</a></div>
+                <nav>
+                    <ul>
+                        <li><a href="#about-us">درباره ما</a></li>
+                        <li><a href="#products">محصولات</a></li>
+                        <li><a href="#faq">سوالات متداول</a></li>
+                    <li><a href="#ma">مقالات</a></li>
+                    </ul>
+                </nav>
+                <div class="header-left-section">
+                    <div class="cart-container" id="open-cart-icon">
+                        <i class="fas fa-shopping-cart cart-icon"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <div class="auth-buttons">
+                        <button class="btn btn-signin"><a href="index2.html">ورود</a></button>
+                        <button class="btn btn-signup"><a href="index2.html">ثبت نام</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="slider-container" id="hero-slider">
+        <div class="slider-wrapper">
+            <div class="slide"
+                style="background-image: url('https://via.placeholder.com/1200x400/2c5e2d/ffffff?text=Slide+1');">
+                <div class="slide-content">
+                    <h2>برداشت جدید برنج طارم</h2>
+                    <p>عطر و طعم بی‌نظیر، مستقیم از شالیزار</p>
+                </div>
+            </div>
+            <div class="slide"
+                style="background-image: url('https://via.placeholder.com/1200x400/4CAF50/ffffff?text=Slide+2');">
+                <div class="slide-content">
+                    <h2>ارسال رایگان برای خرید بالای ۵۰۰ هزار تومان</h2>
+                    <p>سفارش خود را درب منزل تحویل بگیرید</p>
+                </div>
+            </div>
+            <div class="slide"
+                style="background-image: url('https://via.placeholder.com/1200x400/388e3c/ffffff?text=Slide+3');">
+                <div class="slide-content">
+                    <h2>تخفیف ویژه برنج دودی</h2>
+                    <p>لذت طعم اصیل دودی را تجربه کنید</p>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dots"></div>
+    </div>
+
+    <main>
+        <section id="products">
+            <div class="container">
+                <h2 class="section-title">محصولات ویژه ما</h2>
+                <div class="product-grid">
+                    <div class="product-card" data-id="1" data-name="برنج طارم هاشمی" data-price="450000"
+                        data-image="https://via.placeholder.com/300x200/e8f5e9/333333?text=برنج+طارم+هاشمی"><img
+                            src="https://via.placeholder.com/300x200/e8f5e9/333333?text=برنج+طارم+هاشمی"
+                            alt="برنج طارم هاشمی" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">برنج طارم هاشمی</h3>
+                            <p class="product-price">۴۵۰,۰۰۰ تومان</p><button class="btn btn-add-to-cart">افزودن به سبد
+                                خرید</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-id="2" data-name="برنج دمسیاه صدری" data-price="520000"
+                        data-image="https://via.placeholder.com/300x200/dcedc8/333333?text=برنج+دمسیاه+صدری"><img
+                            src="https://via.placeholder.com/300x200/dcedc8/333333?text=برنج+دمسیاه+صدری"
+                            alt="برنج دمسیاه صدری" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">برنج دمسیاه صدری</h3>
+                            <p class="product-price">۵۲۰,۰۰۰ تومان</p><button class="btn btn-add-to-cart">افزودن به سبد
+                                خرید</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-id="3" data-name="برنج علی کاظمی" data-price="480000"
+                        data-image="https://via.placeholder.com/300x200/c8e6c9/333333?text=برنج+علی+کاظمی"><img
+                            src="https://via.placeholder.com/300x200/c8e6c9/333333?text=برنج+علی+کاظمی"
+                            alt="برنج علی کاظمی" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">برنج علی کاظمی</h3>
+                            <p class="product-price">۴۸۰,۰۰۰ تومان</p><button class="btn btn-add-to-cart">افزودن به سبد
+                                خرید</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-id="4" data-name="برنج فجر سوزنی" data-price="390000"
+                        data-image="https://via.placeholder.com/300x200/a5d6a7/333333?text=برنج+فجر+سوزنی"><img
+                            src="https://via.placeholder.com/300x200/a5d6a7/333333?text=برنج+فجر+سوزنی"
+                            alt="برنج فجر سوزنی" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">برنج فجر سوزنی</h3>
+                            <p class="product-price">۳۹۰,۰۰۰ تومان</p><button class="btn btn-add-to-cart">افزودن به سبد
+                                خرید</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-id="5" data-name="برنج عنبر بو" data-price="350000"
+                        data-image="https://via.placeholder.com/300x200/81c784/333333?text=برنج+عنبر+بو"><img
+                            src="https://via.placeholder.com/300x200/81c784/333333?text=برنج+عنبر+بو" alt="برنج عنبر بو"
+                            class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">برنج عنبر بو</h3>
+                            <p class="product-price">۳۵۰,۰۰۰ تومان</p><button class="btn btn-add-to-cart">افزودن به سبد
+                                خرید</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-id="6" data-name="برنج شیرودی" data-price="375000"
+                        data-image="https://via.placeholder.com/300x200/66bb6a/333333?text=برنج+شیرودی"><img
+                            src="https://via.placeholder.com/300x200/66bb6a/333333?text=برنج+شیرودی" alt="برنج شیرودی"
+                            class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">برنج شیرودی</h3>
+                            <p class="product-price">۳۷۵,۰۰۰ تومان</p><button class="btn btn-add-to-cart">افزودن به سبد
+                                خرید</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-id="7" data-name="برنج نیم‌دانه طارم" data-price="220000"
+                        data-image="https://via.placeholder.com/300x200/4caf50/ffffff?text=برنج+نیم‌دانه"><img
+                            src="https://via.placeholder.com/300x200/4caf50/ffffff?text=برنج+نیم‌دانه"
+                            alt="برنج نیم‌دانه طارم" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">برنج نیم‌دانه طارم</h3>
+                            <p class="product-price">۲۲۰,۰۰۰ تومان</p><button class="btn btn-add-to-cart">افزودن به سبد
+                                خرید</button>
+                        </div>
+                    </div>
+                    <div class="product-card" data-id="8" data-name="برنج دودی هیزمی" data-price="550000"
+                        data-image="https://via.placeholder.com/300x200/388e3c/ffffff?text=برنج+دودی"><img
+                            src="https://via.placeholder.com/300x200/388e3c/ffffff?text=برنج+دودی" alt="برنج دودی هیزمی"
+                            class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-name">برنج دودی هیزمی</h3>
+                            <p class="product-price">۵۵۰,۰۰۰ تومان</p><button class="btn btn-add-to-cart">افزودن به سبد
+                                خرید</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW ABOUT US SECTION -->
+        <section id="about-us">
+            <div class="container">
+                <h2 class="section-title">درباره برنجکده خان</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/500x350/e8f5e9/333333?text=شالیزار+برنج"
+                            alt="شالیزار برنج سرسبز">
+                    </div>
+                    <div class="about-text">
+                        <h3>اصالت و کیفیت، از شالیزار تا سفره شما</h3>
+                        <p>برنجکده خان با یک هدف ساده شروع به کار کرد: رساندن عطر و طعم واقعی برنج اصیل ایرانی به دست هر
+                            خانواده. ما با کشاورزان متعهد و باتجربه در بهترین مناطق شمال کشور همکاری می‌کنیم تا محصولی
+                            را ارائه دهیم که نه تنها یک وعده غذایی، بلکه تجربه‌ای از فرهنگ و سخاوت ایرانی باشد.</p>
+                        <p>تعهد ما به کیفیت در تمام مراحل، از کاشت تا بسته‌بندی، تضمین می‌کند که هر دانه برنجی که به دست
+                            شما می‌رسد، بهترین باشد. به خانواده بزرگ برنجکده خان بپیوندید و طعم واقعی برنج را دوباره کشف
+                            کنید.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW FAQ SECTION -->
+        <section id="faq">
+            <div class="container">
+                <h2 class="section-title">سوالات متداول</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>چگونه می‌توانم سفارش خود را ثبت کنم؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>برای ثبت سفارش، محصول مورد نظر خود را به سبد خرید اضافه کرده و سپس با کلیک بر روی دکمه
+                                "نهایی کردن خرید"، مراحل پرداخت و ورود اطلاعات ارسال را تکمیل نمایید.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>هزینه و زمان ارسال چقدر است؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>هزینه ارسال بر اساس وزن و مقصد سفارش محاسبه می‌شود. سفارشات تهران معمولاً طی ۱-۲ روز کاری
+                                و سفارشات شهرستان طی ۳-۵ روز کاری به دست شما خواهند رسید.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>آیا امکان بازگشت کالا وجود دارد؟</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>بله، در صورت عدم رضایت از کیفیت محصول تا ۷ روز پس از تحویل، با هماهنگی با پشتیبانی
+                                می‌توانید کالا را بازگشت دهید. لطفاً شرایط بازگشت کالا را در وبسایت مطالعه فرمایید.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast-container"></div>
+    <div class="cart-overlay" id="cart-overlay" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <div class="cart-panel" id="cart-panel">
+            <div class="cart-header">
+                <h2 id="cart-title">سبد خرید شما</h2><button id="close-cart-btn"
+                    aria-label="بستن سبد خرید">&times;</button>
+            </div>
+            <div id="cart-items-container"></div>
+            <div id="cart-footer" class="cart-footer">
+                <div class="cart-total">
+                    <h3><span>مجموع کل:</span> <span id="cart-total-price">۰ تومان</span></h3>
+                </div>
+                <button id="checkout-btn" class="btn btn-checkout">نهایی کردن خرید</button>
+            </div>
+            <div id="empty-cart-message"><i class="fas fa-shopping-bag"></i>
+                <p>سبد خرید شما خالی است.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-about">
+                    <h4 class="logo">برنجکده خان</h4>
+                    <p>تعهد ما، ارائه برنج اصیل ایرانی با بالاترین کیفیت و عطر و طعم بی‌نظیر، مستقیماً از شالیزار به
+                        سفره شماست.</p>
+                    <div class="footer-social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="واتساپ"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column footer-links">
+                    <h4>لینک‌های مهم</h4>
+                    <ul>
+                        <li><a href="#about-us"><i class="fas fa-angle-left"></i> درباره ما</a></li>
+                        <li><a href="#products"><i class="fas fa-angle-left"></i> فروشگاه محصولات</a></li>
+                        <li><a href="#faq"><i class="fas fa-angle-left"></i> سوالات متداول</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> سیاست حریم خصوصی</a></li>
+                        <li><a href="#ma"><i class="fas fa-angle-left"></i> مقالات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-contact">
+                    <h4>تماس با ما</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span>مازندران، فریدونکنار،ایران</span></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+989963550828">09963550828</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@berenjkade.com">info@khanrice.com</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 برنجکده خان. تمام حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- UI Elements ---
+            const UI = {
+                addToCartButtons: document.querySelectorAll('.btn-add-to-cart'),
+                cartCountBadge: document.getElementById('cart-count'),
+                toastContainer: document.getElementById('toast-container'),
+                openCartIcon: document.getElementById('open-cart-icon'),
+                cartOverlay: document.getElementById('cart-overlay'),
+                cartPanel: document.getElementById('cart-panel'),
+                closeCartBtn: document.getElementById('close-cart-btn'),
+                cartItemsContainer: document.getElementById('cart-items-container'),
+                cartTotalPriceEl: document.getElementById('cart-total-price'),
+                emptyCartMessage: document.getElementById('empty-cart-message'),
+                cartFooter: document.getElementById('cart-footer'),
+                checkoutBtn: document.getElementById('checkout-btn'),
+                focusableElements: 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            };
+
+            // --- Slider Controller Module ---
+            const SliderController = (() => {
+                const slider = document.getElementById('hero-slider');
+                if (!slider) return { init: () => { } };
+                const wrapper = slider.querySelector('.slider-wrapper');
+                const slides = slider.querySelectorAll('.slide');
+                const dotsContainer = slider.querySelector('.slider-dots');
+                const slideCount = slides.length;
+                let currentIndex = 0;
+                let slideInterval;
+                const goToSlide = (index) => { wrapper.style.transform = `translateX(-${index * 100}%)`; updateDots(index); currentIndex = index; };
+                const updateDots = (index) => { dotsContainer.childNodes.forEach((dot, i) => dot.classList.toggle('active', i === index)); };
+                const createDots = () => { for (let i = 0; i < slideCount; i++) { const dot = document.createElement('div'); dot.classList.add('dot'); dot.addEventListener('click', () => { goToSlide(i); resetAutoplay(); }); dotsContainer.appendChild(dot); } };
+                const startAutoplay = () => { slideInterval = setInterval(() => { goToSlide((currentIndex + 1) % slideCount); }, 5000); };
+                const resetAutoplay = () => { clearInterval(slideInterval); startAutoplay(); };
+                const init = () => { createDots(); goToSlide(0); startAutoplay(); };
+                return { init };
+            })();
+
+            // --- Shopping Cart Module ---
+            const ShoppingCart = (() => {
+                let state = { items: [] };
+                const saveToLocalStorage = () => localStorage.setItem('berenjkade_cart', JSON.stringify(state.items));
+                const loadFromLocalStorage = () => { const d = localStorage.getItem('berenjkade_cart'); if (d) state.items = JSON.parse(d); };
+                const render = () => {
+                    UI.cartItemsContainer.innerHTML = '';
+                    if (state.items.length === 0) {
+                        UI.emptyCartMessage.style.display = 'block';
+                        UI.cartFooter.style.display = 'none';
+                    } else {
+                        UI.emptyCartMessage.style.display = 'none';
+                        UI.cartFooter.style.display = 'block';
+                        state.items.forEach(item => {
+                            const itemTotalPrice = item.price * item.quantity;
+                            const cartItemEl = document.createElement('div');
+                            cartItemEl.classList.add('cart-item');
+                            cartItemEl.dataset.id = item.id;
+                            cartItemEl.innerHTML = `<img src="${item.image}" alt="${item.name}" class="cart-item-img"><div class="cart-item-details"><h4>${item.name}</h4><p>${itemTotalPrice.toLocaleString('fa-IR')} تومان</p><div class="cart-item-actions"><div class="quantity-control"><button class="quantity-btn" data-action="decrease" aria-label="کاهش تعداد">-</button><input type="number" class="quantity-input" value="${item.quantity}" min="1" aria-label="تعداد"><button class="quantity-btn" data-action="increase" aria-label="افزایش تعداد">+</button></div><button class="btn-remove-item" data-action="remove" aria-label="حذف آیتم"><i class="fas fa-trash-alt"></i></button></div></div>`;
+                            UI.cartItemsContainer.appendChild(cartItemEl);
+                        });
+                    }
+                    const { total, count } = calculateTotals();
+                    UI.cartTotalPriceEl.textContent = `${total.toLocaleString('fa-IR')} تومان`;
+                    UI.cartCountBadge.textContent = count;
+                    UI.cartCountBadge.classList.toggle('visible', count > 0);
+                    UI.checkoutBtn.disabled = count === 0;
+                    UI.cartTotalPriceEl.classList.add('updated');
+                    setTimeout(() => UI.cartTotalPriceEl.classList.remove('updated'), 600);
+                };
+                const calculateTotals = () => ({ total: state.items.reduce((s, i) => s + (i.price * i.quantity), 0), count: state.items.reduce((s, i) => s + i.quantity, 0) });
+                const addItem = (product) => { const e = state.items.find(i => i.id === product.id); if (e) e.quantity++; else state.items.push({ ...product, quantity: 1 }); saveToLocalStorage(); render(); };
+                const updateQuantity = (id, q) => { const i = state.items.find(item => item.id === id); if (i) { if (q <= 0) removeItem(id); else { i.quantity = q; saveToLocalStorage(); render(); } } };
+                const removeItem = (id) => { state.items = state.items.filter(i => i.id !== id); saveToLocalStorage(); render(); };
+                const init = () => { loadFromLocalStorage(); render(); };
+                return { init, addItem, updateQuantity, removeItem };
+            })();
+
+            // --- UI Controller Module ---
+            const UIController = (() => {
+                const openCart = () => { UI.cartOverlay.classList.add('show'); document.body.style.overflow = 'hidden'; trapFocus(UI.cartPanel); };
+                const closeCart = () => { UI.cartOverlay.classList.remove('show'); document.body.style.overflow = ''; };
+                const showToast = (message) => { const t = document.createElement('div'); t.classList.add('toast'); t.innerHTML = `<i class="fas fa-check-circle"></i> <p>${message}</p>`; UI.toastContainer.appendChild(t); setTimeout(() => t.classList.add('show'), 10); setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 500); }, 3000); };
+                const animateButton = (button) => { button.classList.add('added'); setTimeout(() => button.classList.remove('added'), 600); };
+                const trapFocus = (element) => { const f = element.querySelectorAll(UI.focusableElements), first = f[0], last = f[f.length - 1]; element.addEventListener('keydown', (e) => { if (e.key !== 'Tab') return; if (e.shiftKey) { if (document.activeElement === first) { last.focus(); e.preventDefault(); } } else { if (document.activeElement === last) { first.focus(); e.preventDefault(); } } }); first.focus(); };
+                const handleCartActions = (e) => { const t = e.target, c = t.closest('.cart-item'); if (!c) return; const id = c.dataset.id, a = t.dataset.action || t.closest('[data-action]')?.dataset.action; if (a) { let q = parseInt(c.querySelector('.quantity-input').value); switch (a) { case 'increase': ShoppingCart.updateQuantity(id, q + 1); break; case 'decrease': ShoppingCart.updateQuantity(id, q - 1); break; case 'remove': ShoppingCart.removeItem(id); break; } } else if (t.classList.contains('quantity-input')) { t.addEventListener('change', () => { let nq = parseInt(t.value); if (isNaN(nq) || nq < 1) nq = 1; ShoppingCart.updateQuantity(id, nq); }); } };
+                const initEventListeners = () => {
+                    UI.openCartIcon.addEventListener('click', openCart);
+                    UI.closeCartBtn.addEventListener('click', closeCart);
+                    UI.cartOverlay.addEventListener('click', (e) => { if (e.target === UI.cartOverlay) closeCart(); });
+                    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && UI.cartOverlay.classList.contains('show')) closeCart(); });
+                    UI.addToCartButtons.forEach(b => { b.addEventListener('click', (e) => { const c = b.closest('.product-card'), p = { id: c.dataset.id, name: c.dataset.name, price: parseInt(c.dataset.price), image: c.dataset.image }; ShoppingCart.addItem(p); showToast(`«${p.name}» به سبد خرید اضافه شد!`); animateButton(e.currentTarget); }); });
+                    UI.cartItemsContainer.addEventListener('click', handleCartActions);
+                    UI.cartItemsContainer.addEventListener('input', handleCartActions);
+                };
+                return { initEventListeners };
+            })();
+
+            // --- NEW: FAQ Accordion Controller ---
+            const FAQController = (() => {
+                const faqItems = document.querySelectorAll('.faq-item');
+                if (!faqItems.length) return { init: () => { } };
+
+                const init = () => {
+                    faqItems.forEach(item => {
+                        const question = item.querySelector('.faq-question');
+                        question.addEventListener('click', () => {
+                            // This will close other open items for a cleaner accordion experience
+                            faqItems.forEach(otherItem => {
+                                if (otherItem !== item && otherItem.classList.contains('active')) {
+                                    otherItem.classList.remove('active');
+                                }
+                            });
+                            item.classList.toggle('active');
+                        });
+                    });
+                };
+                return { init };
+            })();
+
+            // --- App Initialization ---
+            SliderController.init();
+            ShoppingCart.init();
+            UIController.initEventListeners();
+            FAQController.init();
+        });
+    </script>
+</body>
+
+</html>
