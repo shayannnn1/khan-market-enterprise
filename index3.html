@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مقالات | برنجکده خان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="index.html">
+    <link rel="stylesheet" href="index5.html">
+    <style>
+        :root {
+            --primary-color: #2c5e2d;
+            --secondary-color: #4CAF50;
+            --accent-color: #ff8c00;
+            --text-color: #333;
+            --bg-light: #f9f9f9;
+            --white: #fff;
+            --danger-color: #ff4d4d;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            background-color: var(--white);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        /* ======================= HEADER STYLES ======================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #c8e6c9;
+        }
+
+        .contact-info i {
+            margin-left: 5px;
+        }
+
+        .header-main {
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-signin {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-signin:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-signup {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-signup:hover {
+            background-color: #45a049;
+        }
+
+        .cart-container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 1.8rem;
+            color: var(--text-color);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: var(--danger-color);
+            color: var(--white);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 2px solid var(--white);
+            transform: scale(0);
+            transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        .cart-badge.visible {
+            transform: scale(1);
+        }
+
+        /* ======================= FOOTER STYLES ======================= */
+        .site-footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 50px 0 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-column.footer-about .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .footer-about p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-links a {
+            color: #bdc3c7;
+            font-size: 1.4rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .footer-social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links ul a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul a:hover {
+            color: var(--white);
+            padding-right: 8px;
+        }
+
+        .footer-links ul a i {
+            margin-left: 8px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            width: 30px;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        .footer-contact a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding: 20px 0;
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        /* ======================= RESPONSIVE STYLES (Header & Footer) ======================= */
+        @media (max-width: 768px) {
+            /* Header Responsive */
+            .contact-info span {
+                display: none;
+            }
+
+            .top-bar-content {
+                justify-content: center;
+            }
+
+            .header-main nav {
+                display: none;
+            }
+
+            /* Footer Responsive */
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-social-links,
+            .footer-contact p {
+                justify-content: center;
+            }
+        }
+
+        /* Articles Section */
+        #articles {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .article-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-header {
+           flex-grow: 1;
+        }
+
+        .article-category {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .article-excerpt {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .article-footer {
+           margin-top: auto;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--primary-color);
+        }
+
+        .read-more i {
+            margin-right: 5px;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+
+        .pagination a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: var(--white);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .pagination a:hover,
+        .pagination a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-left-section {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar-content {
+                justify-content: center;
+            }
+            
+            .contact-info a {
+                margin-right: 10px;
+                font-size: 0.8rem;
+            }
+            
+            .auth-buttons {
+                gap: 5px;
+            }
+            
+            .btn-signin, .btn-signup {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ======================= HEADER ======================= -->
+    <header>
+        <!-- بخش بالایی هدر برای اطلاعات تماس -->
+        <div class="header-top-bar">
+            <div class="container top-bar-content">
+                <div class="contact-info">
+                    <a href="tel:+989123456789"><i class="fas fa-phone"></i> <span>۰۹۱۲۳۴۵۶۷۸۹</span></a>
+                    <a href="mailto:info@berenjkade.com"><i class="fas fa-envelope"></i> <span>info@berenjkade.com</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش اصلی هدر -->
+        <div class="header-main">
+            <div class="container header-content">
+                <!-- لوگو -->
+                <div class="logo">
+                    <a href="index.html">برنجکده خان</a>
+                </div>
+
+                <!-- منوی اصلی -->
+                <nav>
+                    <ul>
+                        <li><a href="index.html#about-us">درباره ما</a></li>
+                        <li><a href="index.html#products">محصولات</a></li>
+                        <li><a href="index.html#faq">سوالات متداول</a></li>
+                        <li><a href="index3.html">مقالات</a></li>
+                    </ul>
+                </nav>
+
+                <!-- بخش دکمه‌ها و سبد خرید -->
+                <div class="header-left-section">
+                    <!-- آیکن سبد خرید -->
+                    <div class="cart-container" id="open-cart-icon">
+                        <i class="fas fa-shopping-cart cart-icon"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <!-- دکمه‌های ورود و ثبت‌نام -->
+                    <div class="auth-buttons">
+                        <button class="btn btn-signin"><a href="index2.html">ورود</a></button>
+                        <button class="btn btn-signup"><a href="index2.html">ثبت نام</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Articles Section -->
+    <section id="articles">
+        <div class="container">
+            <h2 class="section-title">دانستنی‌های برنج در برنجکده خان</h2>
+            <div class="articles-grid">
+                <!-- Article 1 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/2c5e2d/ffffff?text=پخت+برنج+مجلسی" alt="پخت برنج مجلسی" class="article-image">
+                    <div class="article-content">
+                        <div class="article-header">
+                            <div class="article-category">نکات آشپزی</div>
+                            <h3 class="article-title">رازهای پخت یک برنج مجلسی و قد کشیده</h3>
+                            <p class="article-excerpt">همه ما دوست داریم برنجی که می‌پزیم، دانه‌دانه، خوش‌پخت و حسابی قد کشیده باشد. در این مقاله، فوت و فن‌های کلیدی از خیساندن برنج تا دم کردن آن را به شما آموزش می‌دهیم تا همیشه پلویی بی‌نقص داشته باشید.</p>
+                        </div>
+                        <div class="article-footer">
+                           <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۳/۱۰</span>
+                                <span><i class="far fa-clock"></i> ۶ دقیقه</span>
+                            </div>
+                            <a href="index6.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/4CAF50/ffffff?text=برنج+کهنه+و+نو" alt="تشخیص برنج کهنه و نو" class="article-image">
+                    <div class="article-content">
+                        <div class="article-header">
+                            <div class="article-category">راهنمای خرید</div>
+                            <h3 class="article-title">چطور برنج کهنه و نو را از هم تشخیص دهیم؟</h3>
+                            <p class="article-excerpt">برنج کهنه (حداقل یک سال از برداشت آن گذشته باشد) برای پخت بهتر است و بیشتر قد می‌کشد. اما چطور آن را از برنج نو تشخیص دهیم؟ با چند روش ساده مثل بررسی رنگ، بو و سختی دانه، به یک خبره تبدیل شوید.</p>
+                        </div>
+                         <div class="article-footer">
+                           <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۳/۰۵</span>
+                                <span><i class="far fa-clock"></i> ۴ دقیقه</span>
+                            </div>
+                            <a href="index5.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/ff8c00/ffffff?text=شپشک+برنج" alt="جلوگیری از شپشک برنج" class="article-image">
+                    <div class="article-content">
+                         <div class="article-header">
+                            <div class="article-category">نکات نگهداری</div>
+                            <h3 class="article-title">چگونه از شپشک زدن برنج جلوگیری کنیم؟</h3>
+                            <p class="article-excerpt">شپشک زدن برنج یکی از دغدغه‌های اصلی در نگهداری آن است. در این مقاله به شما روش‌های خانگی و اثبات‌شده مانند استفاده از سیر، برگ بو و نمک را معرفی می‌کنیم تا برنج خود را برای مدتی طولانی سالم نگه دارید.</p>
+                        </div>
+                         <div class="article-footer">
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۲/۲۸</span>
+                                <span><i class="far fa-clock"></i> ۳ دقیقه</span>
+                            </div>
+                            <a href="index7.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 4 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/2c5e2d/ffffff?text=برنج+هاشمی" alt="معرفی برنج هاشمی" class="article-image">
+                    <div class="article-content">
+                        <div class="article-header">
+                            <div class="article-category">معرفی محصول</div>
+                            <h3 class="article-title">برنج هاشمی: عطر دل‌انگیز شالیزارهای مازندران</h3>
+                            <p class="article-excerpt">برنج هاشمی یکی از محبوب‌ترین و باکیفیت‌ترین برنج‌های ایرانی است. این برنج به دلیل عطر فوق‌العاده، طعم عالی و ری بی‌نظیرش شهرت دارد. با تاریخچه و ویژگی‌های این برنج اصیل بیشتر آشنا شوید.</p>
+                        </div>
+                         <div class="article-footer">
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۲/۲۲</span>
+                                <span><i class="far fa-clock"></i> ۵ دقیقه</span>
+                            </div>
+                            <a href="index8.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 5 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/4CAF50/ffffff?text=برنج+قهوه+ای" alt="برنج سفید در مقابل برنج قهوه‌ای" class="article-image">
+                    <div class="article-content">
+                        <div class="article-header">
+                            <div class="article-category">سلامت و تغذیه</div>
+                            <h3 class="article-title">برنج سفید در مقابل قهوه‌ای: کدام یک سالم‌تر است؟</h3>
+                            <p class="article-excerpt">انتخاب بین برنج سفید و قهوه‌ای همیشه یک چالش بوده است. برنج قهوه‌ای به دلیل داشتن سبوس، فیبر و مواد مغذی بیشتری دارد، اما برنج سفید هضم آسان‌تری دارد. ارزش غذایی هر دو را مقایسه می‌کنیم.</p>
+                        </div>
+                         <div class="article-footer">
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۲/۱۵</span>
+                                <span><i class="far fa-clock"></i> ۶ دقیقه</span>
+                            </div>
+                            <a href="index9.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 6 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/ff8c00/ffffff?text=ته+دیگ" alt="انواع ته دیگ" class="article-image">
+                    <div class="article-content">
+                        <div class="article-header">
+                             <div class="article-category">آشپزی خلاقانه</div>
+                            <h3 class="article-title">هنر ته دیگ: از سیب‌زمینی تا نان لواش</h3>
+                            <p class="article-excerpt">ته دیگ، بخش هیجان‌انگیز و جدانشدنی سفره ایرانی است. در این مقاله دستور پخت انواع ته دیگ‌های محبوب از جمله ته دیگ سیب‌زمینی کنجدی، ته دیگ نان و حتی ته دیگ ماست و زعفران را به شما آموزش می‌دهیم.</p>
+                        </div>
+                         <div class="article-footer">
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۲/۰۸</span>
+                                <span><i class="far fa-clock"></i> ۷ دقیقه</span>
+                            </div>
+                            <a href="index10.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!-- Article 7 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/2c5e2d/ffffff?text=آبکش+یا+کته" alt="برنج آبکش یا کته" class="article-image">
+                    <div class="article-content">
+                        <div class="article-header">
+                             <div class="article-category">سلامت و آشپزی</div>
+                            <h3 class="article-title">آبکش یا کته؟ کدام روش پخت برنج بهتر است؟</h3>
+                            <p class="article-excerpt">روش پخت برنج تاثیر زیادی بر ارزش غذایی آن دارد. پخت به روش کته باعث حفظ ویتامین‌های گروه B می‌شود، در حالی که روش آبکش برنج را مجلسی‌تر می‌کند. مزایا و معایب هر روش را بررسی می‌کنیم.</p>
+                        </div>
+                         <div class="article-footer">
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۱/۲۹</span>
+                                <span><i class="far fa-clock"></i> ۵ دقیقه</span>
+                            </div>
+                            <a href="index11.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!-- Article 8 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/4CAF50/ffffff?text=برنج+نیم+دانه" alt="کاربردهای برنج نیم دانه" class="article-image">
+                    <div class="article-content">
+                        <div class="article-header">
+                            <div class="article-category">آشپزی خلاقانه</div>
+                            <h3 class="article-title">فراتر از شله‌زرد: کاربردهای شگفت‌انگیز برنج نیم‌دانه</h3>
+                            <p class="article-excerpt">برنج نیم‌دانه فقط برای شله‌زرد و شیربرنج نیست! این برنج اقتصادی و خوش‌طعم برای پخت انواع سوپ، آش، دلمه و حتی کوفته عالی است. با ایده‌های جدید برای استفاده از این محصول آشنا شوید و در هزینه‌ها صرفه‌جویی کنید.</p>
+                        </div>
+                         <div class="article-footer">
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۱/۲۱</span>
+                                <span><i class="far fa-clock"></i> ۴ دقیقه</span>
+                            </div>
+                            <a href="index12.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                 <!-- Article 9 -->
+                <div class="article-card">
+                    <img src="https://placehold.co/600x400/ff8c00/ffffff?text=تاریخچه+برنج" alt="تاریخچه برنج در ایران" class="article-image">
+                    <div class="article-content">
+                        <div class="article-header">
+                            <div class="article-category">تاریخ و فرهنگ</div>
+                            <h3 class="article-title">تاریخچه برنج در ایران: از شالیزار تا سفره شاهانه</h3>
+                            <p class="article-excerpt">برنج چگونه به یکی از ارکان اصلی آشپزی ایرانی تبدیل شد؟ در این مقاله سفری داریم به تاریخچه کشت برنج در ایران، از اولین شالیزارها در گیلان و مازندران تا جایگاه ویژه‌ای که امروزه در فرهنگ و غذای ما دارد.</p>
+                        </div>
+                         <div class="article-footer">
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۱/۱۵</span>
+                                <span><i class="far fa-clock"></i> ۸ دقیقه</span>
+                            </div>
+                            <a href="index13.html" class="read-more">ادامه مطلب <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#"><i class="fas fa-chevron-right"></i></a>
+                <a href="#" class="active">1</a>
+                
+                <a href="#"><i class="fas fa-chevron-left"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- ستون درباره ما -->
+                <div class="footer-column footer-about">
+                    <h4 class="logo">برنجکده خان</h4>
+                    <p>تعهد ما، ارائه برنج اصیل ایرانی با بالاترین کیفیت و عطر و طعم بی‌نظیر، مستقیماً از شالیزار به سفره شماست.</p>
+                    <div class="footer-social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="واتساپ"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- ستون لینک‌های مهم -->
+                <div class="footer-column footer-links">
+                    <h4>لینک‌های مهم</h4>
+                    <ul>
+                        <li><a href="index.html#about-us"><i class="fas fa-angle-left"></i> درباره ما</a></li>
+                        <li><a href="index.html#products"><i class="fas fa-angle-left"></i> فروشگاه محصولات</a></li>
+                        <li><a href="index.html#faq"><i class="fas fa-angle-left"></i> سوالات متداول</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> سیاست حریم خصوصی</a></li>
+                        <li><a href="index3.html"><i class="fas fa-angle-left"></i> مقالات</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون تماس با ما -->
+                <div class="footer-column footer-contact">
+                    <h4>تماس با ما</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span>مازندران، فریدونکنار،ایران</span></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+989963550828">09963550828</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@berenjkade.com">info@khanrice.com</a></p>
+                </div>
+            </div>
+
+            <!-- بخش پایینی فوتر (کپی‌رایت) -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 برنجکده خان. تمام حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
