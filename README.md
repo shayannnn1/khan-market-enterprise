@@ -1,1 +1,1 @@
-# khan-market-enterprise
+# khan-rice-enterprise
