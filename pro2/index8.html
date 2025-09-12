@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عنوان مقاله | برنجکده خان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c5e2d;
+            --secondary-color: #4CAF50;
+            --accent-color: #ff8c00;
+            --text-color: #333;
+            --bg-light: #f9f9f9;
+            --white: #fff;
+            --danger-color: #ff4d4d;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            margin: 0;
+            background-color: var(--white);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ======================= HEADER STYLES ======================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-top-bar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #c8e6c9;
+        }
+
+        .contact-info i {
+            margin-left: 5px;
+        }
+
+        .header-main {
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo a {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-signin {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+        }
+
+        .btn-signin:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-signup {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-signup:hover {
+            background-color: #45a049;
+        }
+
+        .cart-container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 1.8rem;
+            color: var(--text-color);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background-color: var(--danger-color);
+            color: var(--white);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 2px solid var(--white);
+            transform: scale(0);
+            transition: transform 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+        }
+
+        .cart-badge.visible {
+            transform: scale(1);
+        }
+
+        /* ======================= FOOTER STYLES ======================= */
+        .site-footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 50px 0 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            padding-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .footer-column.footer-about .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .footer-about p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social-links a {
+            color: #bdc3c7;
+            font-size: 1.4rem;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .footer-social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links ul a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links ul a:hover {
+            color: var(--white);
+            padding-right: 8px;
+        }
+
+        .footer-links ul a i {
+            margin-left: 8px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            width: 30px;
+            text-align: center;
+            margin-left: 10px;
+        }
+
+        .footer-contact a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding: 20px 0;
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        /* ======================= ARTICLE PAGE STYLES ======================= */
+        .article-header {
+            padding: 60px 0 30px;
+        }
+
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+            color: #777;
+            font-size: 1rem;
+        }
+
+        .article-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .article-content {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .article-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: var(--bg-light);
+            color: var(--accent-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .article-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .article-text h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .article-text h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 30px 0 15px;
+        }
+
+        .article-text p {
+            margin-bottom: 20px;
+        }
+
+        .article-text ul, .article-text ol {
+            margin: 20px 0 20px 30px;
+            line-height: 1.8;
+        }
+
+        .article-text li {
+            margin-bottom: 10px;
+        }
+
+        .article-text blockquote {
+            border-right: 4px solid var(--secondary-color);
+            padding: 15px 20px;
+            background-color: var(--bg-light);
+            margin: 25px 0;
+            border-radius: 0 5px 5px 0;
+            font-style: italic;
+        }
+
+        .article-text img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .article-text table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        .article-text th, .article-text td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: right;
+        }
+
+        .article-text th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .article-text tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .article-share {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .share-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .share-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .related-articles {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid #eee;
+        }
+
+        .related-articles h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .related-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .related-content {
+            padding: 20px;
+        }
+
+        .related-category {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        
+
+
+        .related-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* ======================= RESPONSIVE STYLES ======================= */
+        @media (max-width: 768px) {
+            /* Header Responsive */
+            .contact-info span {
+                display: none;
+            }
+
+            .top-bar-content {
+                justify-content: center;
+            }
+
+            .header-main nav {
+                display: none;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+
+            .article-content {
+                padding: 25px;
+            }
+
+            .article-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .top-bar-content {
+                justify-content: center;
+            }
+            
+            .contact-info a {
+                margin-right: 10px;
+                font-size: 0.8rem;
+            }
+            
+            .auth-buttons {
+                gap: 5px;
+            }
+            
+            .btn-signin, .btn-signup {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ======================= HEADER ======================= -->
+    <header>
+        <!-- بخش بالایی هدر برای اطلاعات تماس -->
+        <div class="header-top-bar">
+            <div class="container top-bar-content">
+                <div class="contact-info">
+                    <a href="tel:+989123456789"><i class="fas fa-phone"></i> <span>۰۹۱۲۳۴۵۶۷۸۹</span></a>
+                    <a href="mailto:info@berenjkade.com"><i class="fas fa-envelope"></i> <span>info@berenjkade.com</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش اصلی هدر -->
+        <div class="header-main">
+            <div class="container header-content">
+                <!-- لوگو -->
+                <div class="logo">
+                    <a href="index.html">برنجکده خان</a>
+                </div>
+
+                <!-- منوی اصلی -->
+                <nav>
+                    <ul>
+                        <li><a href="index.html#about-us">درباره ما</a></li>
+                        <li><a href="index.html#products">محصولات</a></li>
+                        <li><a href="index.html#faq">سوالات متداول</a></li>
+                        <li><a href="index3.html">مقالات</a></li>
+                    </ul>
+                </nav>
+
+                <!-- بخش دکمه‌ها و سبد خرید -->
+                <div class="header-left-section">
+                    <!-- آیکن سبد خرید -->
+                    <div class="cart-container" id="open-cart-icon">
+                        <i class="fas fa-shopping-cart cart-icon"></i>
+                        <span id="cart-count" class="cart-badge">0</span>
+                    </div>
+                    <!-- دکمه‌های ورود و ثبت‌نام -->
+                    <div class="auth-buttons">
+                        <button class="btn btn-signin"><a href="index2.html">ورود</a></button>
+                        <button class="btn btn-signup"><a href="index2.html">ثبت نام</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ======================= ARTICLE CONTENT ======================= -->
+    <section class="article-header">
+        <div class="container">
+            <!-- اینجا می‌توانید تصویر اصلی مقاله را قرار دهید -->
+            <img src="https://placehold.co/1200x400/2c5e2d/ffffff?text=عنوان+مقاله" alt="عنوان مقاله" class="article-image">
+            
+            <div class="article-meta">
+                <div class="article-meta-item">
+                    <i class="far fa-calendar"></i>
+                    <span>۱۴۰۳/۰۳/۱۰</span>
+                </div>
+                <div class="article-meta-item">
+                    <i class="far fa-clock"></i>
+                    <span>۶ دقیقه</span>
+                </div>
+                <div class="article-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>نویسنده: تیم تحریریه برنجکده خان</span>
+                </div>
+                <div class="article-meta-item">
+                    <i class="fas fa-eye"></i>
+                    <span>بازدید: ۱۲۵۰</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section">
+        <div class="container">
+            <div class="article-content">
+                <span class="article-category">نکات آشپزی</span>
+                <h1 class="article-title"></h1>
+                
+         <div class="article-text">
+    <h1>برنج هاشمی: عطر دل‌انگیز شالیزارهای مازندران</h1>
+
+    <p>برنج هاشمی یکی از برنج‌های ممتاز ایرانی است که با عطر و طعم بی‌نظیرش محبوبیت ویژه‌ای بین خانواده‌ها و رستوران‌ها دارد. این برنج با دانه‌های بلند، نرم و خوش‌رنگ، مخصوصاً برای پلوهای مجلسی، چلوکباب و مراسم‌های خاص مناسب است و در شالیزارهای سرسبز مازندران کشت می‌شود.</p>
+
+    <h2>ویژگی‌های برجسته برنج هاشمی</h2>
+    <ul>
+        <li><strong>عطر و طعم:</strong> عطر طبیعی و دلنشین که پس از پخت، فضای آشپزخانه را معطر می‌کند.</li>
+        <li><strong>اندازه دانه:</strong> بلند و کشیده، دانه‌ها پس از پخت ری عالی دارند و جدا می‌مانند.</li>
+        <li><strong>رنگ:</strong> سفید استخوانی با شفافیت طبیعی دانه.</li>
+        <li><strong>میزان شکستگی:</strong> پایین، که نشان از کیفیت بالای محصول دارد.</li>
+        <li><strong>سفتی و نرمی:</strong> پس از پخت نرم اما له نمی‌شود و برای دم‌کردن بسیار مناسب است.</li>
+        <li><strong>تفاوت با برنج‌های نو و کهنه:</strong> حتی پس از چند ماه نگهداری، عطر و ری خود را حفظ می‌کند.</li>
+    </ul>
+
+    <h2>تاریخچه و منشأ</h2>
+    <p>برنج هاشمی ابتدا در مازندران و بخش‌هایی از گیلان کشت شد. نام هاشمی برگرفته از نام خانواده‌هایی است که سال‌ها در توسعه و اصلاح این گونه تلاش کرده‌اند. به دلیل سازگاری با شرایط آب و هوایی شمال ایران، این برنج به سرعت محبوب شد و اکنون در بازارهای داخلی و خارجی شناخته می‌شود.</p>
+
+    <h2>فواید سلامتی برنج هاشمی</h2>
+    <ul>
+        <li>منبع عالی انرژی با کربوهیدرات پیچیده.</li>
+        <li>کم‌چرب و مناسب برای رژیم‌های سالم.</li>
+        <li>حاوی ویتامین‌های گروه B و مواد معدنی مانند منیزیم و فسفر.</li>
+        <li>سبک و هضم آسان، مناسب برای افراد دارای مشکلات گوارشی.</li>
+    </ul>
+
+    <h2>بهترین روش‌های پخت برنج هاشمی</h2>
+    <p>برای داشتن برنج خوش‌رنگ، قد کشیده و معطر، رعایت نکات زیر ضروری است:</p>
+    <ul>
+        <li><strong>شست‌وشو و خیساندن:</strong> برنج را چندین بار بشویید تا آب شفاف شود و سپس ۳۰–۶۰ دقیقه در آب ولرم خیس کنید.</li>
+        <li><strong>آبکشی:</strong> آب را به جوش آورده و برنج را در آن بپزید تا نیم‌پز شود. نمک به مقدار مناسب اضافه کنید.</li>
+        <li><strong>دم‌کردن:</strong> با حرارت کم و استفاده از دم‌کنی، ۲۰–۳۰ دقیقه برنج را بخارپز کنید تا دانه‌ها جدا و ری عالی داشته باشند.</li>
+        <li><strong>استفاده از کمی روغن یا کره:</strong> برای براق شدن دانه‌ها و خوش‌عطر شدن برنج، کمی روغن یا کره هنگام دم‌کردن اضافه کنید.</li>
+        <li><strong>ترکیب برنج نو و کهنه:</strong> بسیاری از آشپزها ترکیب ۳۰–۵۰٪ برنج نو با هاشمی را توصیه می‌کنند تا هم عطر و هم ری عالی حفظ شود.</li>
+    </ul>
+
+    <h2>روش‌های تشخیص کیفیت برنج هاشمی</h2>
+    <ul>
+        <li><strong>ظاهر دانه:</strong> دانه‌های بلند، بدون ترک و مات شدگی غیر طبیعی.</li>
+        <li><strong>بو:</strong> عطر طبیعی و تازه، بدون بوی کهنگی یا کپک.</li>
+        <li><strong>تست پخت:</strong> پس از پخت، دانه‌ها باید کشیده و جدا باشند و نرم شوند.</li>
+        <li><strong>میزان شکستگی:</strong> پایین بودن شکستگی نشان‌دهنده کیفیت بالاست.</li>
+    </ul>
+
+    <h2>تفاوت برنج هاشمی با سایر گونه‌ها</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ویژگی</th>
+                <th>برنج هاشمی</th>
+                <th>برنج طارم</th>
+                <th>برنج شیرودی</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>عطر</td>
+                <td>خیلی معطر</td>
+                <td>بسیار معطر</td>
+                <td>ملایم</td>
+            </tr>
+            <tr>
+                <td>اندازه دانه</td>
+                <td>بلند و کشیده</td>
+                <td>بلند</td>
+                <td>متوسط</td>
+            </tr>
+            <tr>
+                <td>ری بعد از پخت</td>
+                <td>عالی و دانه‌ها جدا</td>
+                <td>خوب</td>
+                <td>معمولی</td>
+            </tr>
+            <tr>
+                <td>مناسب برای</td>
+                <td>پلوهای مجلسی و چلوکباب</td>
+                <td>چلو و خورش</td>
+                <td>آب‌کش و کته روزمره</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>نگهداری برنج هاشمی</h2>
+    <ul>
+        <li>ظروف درب‌دار پلاستیکی، شیشه‌ای یا فلزی بهترین گزینه هستند.</li>
+        <li>در مکان خشک، خنک و دور از نور مستقیم خورشید نگهداری شود.</li>
+        <li>هر چند ماه یک بار کیفیت و سلامت برنج بررسی شود.</li>
+        <li>برای پیشگیری از شپشک یا آفات، می‌توان از بسته‌های جذب رطوبت یا ادویه‌های طبیعی مانند فلفل، برگ بو و میخک استفاده کرد.</li>
+    </ul>
+
+    <h2>سؤالات متداول درباره برنج هاشمی</h2>
+    <ul>
+        <li><strong>س: برنج هاشمی بهتر است یا طارم؟</strong><br>پاسخ: اگر دنبال عطر دل‌انگیز و ری عالی هستید، هاشمی بهترین انتخاب است. طارم کمی نرم‌تر و برای خورش مناسب‌تر است.</li>
+        <li><strong>س: آیا برنج هاشمی را می‌توان برای دم‌کردن و کته استفاده کرد؟</strong><br>پاسخ: بله، با رعایت نسبت آب و زمان پخت، هاشمی برای هر دو روش مناسب است.</li>
+        <li><strong>س: مدت زمان خیساندن برنج هاشمی چقدر است؟</strong><br>پاسخ: ۳۰–۶۰ دقیقه در آب ولرم توصیه می‌شود.</li>
+        <li><strong>س: آیا می‌توان برنج هاشمی را به مدت طولانی نگهداری کرد؟</strong><br>پاسخ: بله، در ظروف درب‌دار و محیط خشک و خنک می‌توان تا یک سال بدون کاهش کیفیت نگهداری کرد.</li>
+    </ul>
+
+    <h2>جمع‌بندی</h2>
+    <p>برنج هاشمی با عطر دل‌انگیز، دانه‌های بلند و ری عالی، یکی از محبوب‌ترین برنج‌های ایرانی است. با رعایت نکات پخت و نگهداری، می‌توانید همیشه برنجی خوش‌عطر، خوش‌رنگ و سالم داشته باشید و لذت واقعی از سفره‌های ایرانی ببرید.</p>
+</div>
+
+
+
+                
+                <div class="article-share">
+                    <a href="#" class="share-btn"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="share-btn"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="share-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="share-btn"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="related-articles">
+                <h3>مقالات مرتبط</h3>
+                <div class="related-grid">
+                    <!-- مقاله مرتبط 1 -->
+                    <div class="related-card">
+                        <img src="https://placehold.co/600x400/2c5e2d/ffffff?text=مقاله+مرتبط+1" alt="مقاله مرتبط 1" class="related-image">
+                        <div class="related-content">
+                            <div class="related-category">راهنمای خرید</div>
+                            <h3 class="related-title">رازهای پخت یک برنج مجلسی و قد کشیده</h3>
+                            <div class="related-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۳/۰۵</span>
+                                <span><i class="far fa-clock"></i> ۴ دقیقه</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- مقاله مرتبط 2 -->
+                    <div class="related-card">
+                        <img src="https://placehold.co/600x400/4CAF50/ffffff?text=مقاله+مرتبط+2" alt="مقاله مرتبط 2" class="related-image">
+                        <div class="related-content">
+                            <div class="related-category">نکات آشپزی</div>
+                            <h3 class="related-title">رازهای پخت یک برنج مجلسی و قد کشیده</h3>
+                            <div class="related-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۳/۱۰</span>
+                                <span><i class="far fa-clock"></i> ۶ دقیقه</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- مقاله مرتبط 3 -->
+                    <div class="related-card">
+                        <img src="https://placehold.co/600x400/ff8c00/ffffff?text=مقاله+مرتبط+3" alt="مقاله مرتبط 3" class="related-image">
+                        <div class="related-content">
+                            <div class="related-category">سلامت و تغذیه</div>
+                            <h3 class="related-title">برنج سفید در مقابل قهوه‌ای: کدام یک سالم‌تر است؟</h3>
+                            <div class="related-meta">
+                                <span><i class="far fa-calendar"></i> ۱۴۰۳/۰۲/۱۵</span>
+                                <span><i class="far fa-clock"></i> ۶ دقیقه</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- ستون درباره ما -->
+                <div class="footer-column footer-about">
+                    <h4 class="logo">برنجکده خان</h4>
+                    <p>تعهد ما، ارائه برنج اصیل ایرانی با بالاترین کیفیت و عطر و طعم بی‌نظیر، مستقیماً از شالیزار به سفره شماست.</p>
+                    <div class="footer-social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="واتساپ"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- ستون لینک‌های مهم -->
+                <div class="footer-column footer-links">
+                    <h4>لینک‌های مهم</h4>
+                    <ul>
+                        <li><a href="index.html#about-us"><i class="fas fa-angle-left"></i> درباره ما</a></li>
+                        <li><a href="index.html#products"><i class="fas fa-angle-left"></i> فروشگاه محصولات</a></li>
+                        <li><a href="index.html#faq"><i class="fas fa-angle-left"></i> سوالات متداول</a></li>
+                        <li><a href="#"><i class="fas fa-angle-left"></i> سیاست حریم خصوصی</a></li>
+                        <li><a href="index3.html"><i class="fas fa-angle-left"></i> مقالات</a></li>
+                    </ul>
+                </div>
+
+                <!-- ستون تماس با ما -->
+                <div class="footer-column footer-contact">
+                    <h4>تماس با ما</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> <span>مازندران، فریدونکنار،ایران</span></p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+989963550828">09963550828</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@berenjkade.com">info@khanrice.com</a></p>
+                </div>
+            </div>
+
+            <!-- بخش پایینی فوتر (کپی‌رایت) -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 برنجکده خان. تمام حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+ <style>
+/* --- START: Added Cart & Toast Styles --- */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateX(-100%);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast i {
+            font-size: 1.5rem;
+            margin-left: 15px;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .cart-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 420px;
+            max-width: 95%;
+            height: 100%;
+            background-color: var(--white);
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-overlay.show .cart-panel {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        #close-cart-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #888;
+            transition: transform 0.2s;
+        }
+
+        #close-cart-btn:hover {
+            transform: rotate(90deg);
+            color: var(--text-color);
+        }
+
+        #cart-items-container {
+            padding: 10px 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 20px;
+        }
+
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-left: 15px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-details h4 {
+            margin: 0 0 5px;
+            font-size: 1rem;
+        }
+
+        .cart-item-details p {
+            margin: 0;
+            color: #555;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            color: var(--primary-color);
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .btn-remove-item {
+            background: none;
+            border: none;
+            color: var(--danger-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-right: auto;
+            padding: 5px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background-color: var(--bg-light);
+        }
+
+        .cart-total h3 {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 0 15px;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        .btn-checkout:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #empty-cart-message {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+            color: #888;
+        }
+
+        #empty-cart-message i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            color: #ddd;
+        } 
+
+</style>
+
+    <div id="toast-container"></div>
+    <div class="cart-overlay" id="cart-overlay" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <div class="cart-panel" id="cart-panel">
+            <div class="cart-header">
+                <h2 id="cart-title">سبد خرید شما</h2><button id="close-cart-btn"
+                    aria-label="بستن سبد خرید">&times;</button>
+            </div>
+            <div id="cart-items-container"></div>
+            <div id="cart-footer" class="cart-footer">
+                <div class="cart-total">
+                    <h3><span>مجموع کل:</span> <span id="cart-total-price">۰ تومان</span></h3>
+                </div>
+                <a href="index40.html"><button id="checkout-btn" class="btn btn-checkout">نهایی کردن خرید</button></a>
+            </div>
+            <div id="empty-cart-message"><i class="fas fa-shopping-bag"></i>
+                <p>سبد خرید شما خالی است.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- UI Elements ---
+            const UI = {
+                // Note: addToCartButtons will be an empty list on this page, which is fine.
+                addToCartButtons: document.querySelectorAll('.btn-add-to-cart'),
+                cartCountBadge: document.getElementById('cart-count'),
+                toastContainer: document.getElementById('toast-container'),
+                openCartIcon: document.getElementById('open-cart-icon'),
+                cartOverlay: document.getElementById('cart-overlay'),
+                cartPanel: document.getElementById('cart-panel'),
+                closeCartBtn: document.getElementById('close-cart-btn'),
+                cartItemsContainer: document.getElementById('cart-items-container'),
+                cartTotalPriceEl: document.getElementById('cart-total-price'),
+                emptyCartMessage: document.getElementById('empty-cart-message'),
+                cartFooter: document.getElementById('cart-footer'),
+                checkoutBtn: document.getElementById('checkout-btn'),
+                focusableElements: 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            };
+
+            // --- Shopping Cart Module ---
+            const ShoppingCart = (() => {
+                let state = { items: [] };
+                const saveToLocalStorage = () => localStorage.setItem('berenjkade_cart', JSON.stringify(state.items));
+                const loadFromLocalStorage = () => { const d = localStorage.getItem('berenjkade_cart'); if (d) state.items = JSON.parse(d); };
+                const render = () => {
+                    UI.cartItemsContainer.innerHTML = '';
+                    if (state.items.length === 0) {
+                        UI.emptyCartMessage.style.display = 'block';
+                        UI.cartFooter.style.display = 'none';
+                    } else {
+                        UI.emptyCartMessage.style.display = 'none';
+                        UI.cartFooter.style.display = 'block';
+                        state.items.forEach(item => {
+                            const itemTotalPrice = item.price * item.quantity;
+                            const cartItemEl = document.createElement('div');
+                            cartItemEl.classList.add('cart-item');
+                            cartItemEl.dataset.id = item.id;
+                            // A default placeholder image is used if the item image isn't saved, which is unlikely but safe.
+                            const imageUrl = item.image || `https://placehold.co/80x80/e8f5e9/333333?text=${encodeURIComponent(item.name)}`;
+                            cartItemEl.innerHTML = `<img src="${imageUrl}" alt="${item.name}" class="cart-item-img"><div class="cart-item-details"><h4>${item.name}</h4><p>${itemTotalPrice.toLocaleString('fa-IR')} تومان</p><div class="cart-item-actions"><div class="quantity-control"><button class="quantity-btn" data-action="decrease" aria-label="کاهش تعداد">-</button><input type="number" class="quantity-input" value="${item.quantity}" min="1" aria-label="تعداد"><button class="quantity-btn" data-action="increase" aria-label="افزایش تعداد">+</button></div><button class="btn-remove-item" data-action="remove" aria-label="حذف آیتم"><i class="fas fa-trash-alt"></i></button></div></div>`;
+                            UI.cartItemsContainer.appendChild(cartItemEl);
+                        });
+                    }
+                    const { total, count } = calculateTotals();
+                    UI.cartTotalPriceEl.textContent = `${total.toLocaleString('fa-IR')} تومان`;
+                    UI.cartCountBadge.textContent = count;
+                    UI.cartCountBadge.classList.toggle('visible', count > 0);
+                    UI.checkoutBtn.disabled = count === 0;
+                    UI.cartTotalPriceEl.classList.add('updated');
+                    setTimeout(() => UI.cartTotalPriceEl.classList.remove('updated'), 600);
+                };
+                const calculateTotals = () => ({ total: state.items.reduce((s, i) => s + (i.price * i.quantity), 0), count: state.items.reduce((s, i) => s + i.quantity, 0) });
+                const addItem = (product) => { const e = state.items.find(i => i.id === product.id); if (e) e.quantity++; else state.items.push({ ...product, quantity: 1 }); saveToLocalStorage(); render(); };
+                const updateQuantity = (id, q) => { const i = state.items.find(item => item.id === id); if (i) { if (q <= 0) removeItem(id); else { i.quantity = q; saveToLocalStorage(); render(); } } };
+                const removeItem = (id) => { state.items = state.items.filter(i => i.id !== id); saveToLocalStorage(); render(); };
+                const init = () => { loadFromLocalStorage(); render(); };
+                return { init, addItem, updateQuantity, removeItem };
+            })();
+
+            // --- UI Controller Module ---
+            const UIController = (() => {
+                const openCart = () => { UI.cartOverlay.classList.add('show'); document.body.style.overflow = 'hidden'; trapFocus(UI.cartPanel); };
+                const closeCart = () => { UI.cartOverlay.classList.remove('show'); document.body.style.overflow = ''; };
+                const showToast = (message) => { const t = document.createElement('div'); t.classList.add('toast'); t.innerHTML = `<i class="fas fa-check-circle"></i> <p>${message}</p>`; UI.toastContainer.appendChild(t); setTimeout(() => t.classList.add('show'), 10); setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 500); }, 3000); };
+                const animateButton = (button) => { button.classList.add('added'); setTimeout(() => button.classList.remove('added'), 600); };
+                const trapFocus = (element) => { const f = element.querySelectorAll(UI.focusableElements), first = f[0], last = f[f.length - 1]; if (!first) return; element.addEventListener('keydown', (e) => { if (e.key !== 'Tab') return; if (e.shiftKey) { if (document.activeElement === first) { last.focus(); e.preventDefault(); } } else { if (document.activeElement === last) { first.focus(); e.preventDefault(); } } }); first.focus(); };
+                const handleCartActions = (e) => { const t = e.target, c = t.closest('.cart-item'); if (!c) return; const id = c.dataset.id, a = t.dataset.action || t.closest('[data-action]')?.dataset.action; if (a) { let q = parseInt(c.querySelector('.quantity-input').value); switch (a) { case 'increase': ShoppingCart.updateQuantity(id, q + 1); break; case 'decrease': ShoppingCart.updateQuantity(id, q - 1); break; case 'remove': ShoppingCart.removeItem(id); break; } } else if (t.classList.contains('quantity-input')) { t.addEventListener('change', () => { let nq = parseInt(t.value); if (isNaN(nq) || nq < 1) nq = 1; ShoppingCart.updateQuantity(id, nq); }); } };
+                const initEventListeners = () => {
+                    UI.openCartIcon.addEventListener('click', openCart);
+                    UI.closeCartBtn.addEventListener('click', closeCart);
+                    UI.cartOverlay.addEventListener('click', (e) => { if (e.target === UI.cartOverlay) closeCart(); });
+                    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && UI.cartOverlay.classList.contains('show')) closeCart(); });
+                    // This will do nothing on this page as there are no add to cart buttons, but it's safe to keep.
+                    UI.addToCartButtons.forEach(b => { b.addEventListener('click', (e) => { const c = b.closest('.product-card'), p = { id: c.dataset.id, name: c.dataset.name, price: parseInt(c.dataset.price), image: c.dataset.image }; ShoppingCart.addItem(p); showToast(`«${p.name}» به سبد خرید اضافه شد!`); animateButton(e.currentTarget); }); });
+                    UI.cartItemsContainer.addEventListener('click', handleCartActions);
+                    UI.cartItemsContainer.addEventListener('input', handleCartActions);
+                };
+                return { initEventListeners };
+            })();
+
+            // --- App Initialization ---
+            ShoppingCart.init();
+            UIController.initEventListeners();
+        });
+    </script>
+
+
+
+</body>
+</html>
